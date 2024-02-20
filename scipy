@@ -1,0 +1,30 @@
+from scipy import stats
+import numpy as np
+
+# =================================================Задание 1
+# Создание объекта распределения
+dist = stats.norm(loc=0, scale=1) # Нормальное распределение с параметрами (среднее=0, стандартное отклонение=1)
+uni = stats.uniform(loc=0, scale=1) # Равномерное распределение на интервале [0, 1]
+
+# Получение значения функции плотности вероятности
+pdf_value = dist.pdf(0)
+pdf_value1 = uni.pdf(0)
+
+# Получение значения функции распределения
+cdf_value = dist.cdf(1)
+cdf_value1 = uni.cdf(1)
+
+# Генерация случайных чисел из распределения
+random_values = dist.rvs(size=10), uni.rvs(size=10)
+
+print(random_values)
+
+# =================================================Задание 2
+
+# Одновыборочный t-тест
+# Создание выборки из 10 случайных чисел из Uniform(-1, 1)
+sample = np.random.uniform(-1, 1, 10)
+# Проверьте гипотезу о том, что среднее значение выборки равно 0.
+t_statistic, p_value = stats.ttest_1samp(sample, popmean=0) # Попмеан устанавливаем 0
+
+print(t_statistic, p_value)
